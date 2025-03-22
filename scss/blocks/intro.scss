@@ -1,0 +1,389 @@
+// --- INTRO
+.intro {
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: $background-dark-blue;
+    background-image: url("C:/Users/user/Documents/analytics-landing-sass/assets/icons/bg-logo-1.png"),
+      url("C:/Users/user/Documents/analytics-landing-sass/assets/icons/bg-logo-2.png");
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0% 100%);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -17px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $pink;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0% 100%);
+  }
+}
+
+.header {
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+
+  &__menu-btn {
+    display: none;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    margin-right: 82px;
+    user-select: none;
+
+    img {
+      margin-right: 13px;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+      text-transform: uppercase;
+    }
+  }
+
+  &__menu {
+    flex-grow: 1;
+
+    &-list {
+      display: flex;
+      gap: 36px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    z-index: 1;
+
+    a {
+      line-height: 150%;
+    }
+  }
+
+  &__item::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    height: 2px;
+    background-color: $pink;
+    transition: all 0.2s;
+  }
+
+  &__item:hover::before {
+    width: 100%;
+  }
+
+  &__btns {
+    z-index: 2;
+    display: flex;
+    gap: 15px;
+
+    &--transparent {
+      @include btn(transparent, $gray, transparent, 68px, 16px, 10px, 53px);
+      transition: all 0.2s ease;
+
+      &:hover {
+        @include btn(transparent, $gray, $gray, 68px, 16px, 10px, 53px);
+      }
+    }
+
+    &--circular {
+      @include btn(transparent, $gray, $gray, 68px, 16px, 10px, 53px);
+      transition: all 0.2s ease;
+
+      &:hover {
+        filter: brightness(130%);
+      }
+    }
+  }
+}
+
+.dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 74px;
+  padding-bottom: 258px;
+
+  &__info {
+    max-width: 550px;
+    padding-top: 78px;
+
+    &-title {
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 120%;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    &-text {
+      font-size: 18px;
+      line-height: 150%;
+      padding-bottom: 50px;
+    }
+
+    &-btn {
+      @include btn($pink, #fff, transparent, 68px, 16px, 15px, 80px);
+      transition: all 0.2s ease;
+
+      &:hover {
+        @include btn(transparent, $pink, $pink, 68px, 16px, 15px, 80px);
+      }
+    }
+  }
+
+  &__charts {
+    position: relative;
+    z-index: 1;
+
+    img {
+      position: relative;
+      top: 88px;
+      left: -175px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: -50px;
+      left: calc(120% - 650px);
+      width: calc(220% - 50px);
+      height: 650px;
+      background: url("C:/Users/user/Documents/analytics-landing-sass/assets/img/chart-big.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .intro::after {
+    background-image: url("C:/Users/user/Documents/analytics-landing-sass/assets/icons/bg-logo-1.png"),
+      url("C:/Users/user/Documents/analytics-landing-sass/assets/icons/bg-logo-2.png");
+    background-position: 0 0, 400px 0;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .intro {
+    &::after,
+    &::before {
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+    }
+
+    &::after {
+      background-image: none;
+    }
+  }
+
+  .header {
+    justify-content: space-between;
+
+    &__logo {
+      flex-grow: 1;
+    }
+
+    &__btns--transparent {
+      @include btn(transparent, $gray, transparent, 68px, 16px, 6px, 12px);
+      margin-right: 6px;
+    }
+
+    &__btns--transparent:hover {
+      @include btn(transparent, $gray, $gray, 68px, 16px, 6px, 12px);
+    }
+
+    &__menu-btn {
+      display: block;
+      position: relative;
+
+      input {
+        cursor: pointer;
+        position: relative;
+        visibility: hidden;
+        width: 24px;
+        height: 24px;
+
+        &:checked {
+          ~ .header__menu--side {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          top: 0;
+          left: 0;
+          visibility: visible;
+          background: url("C:/Users/user/Documents/analytics-landing-sass/assets/icons/menu-icon.svg");
+          background-repeat: no-repeat;
+        }
+      }
+    }
+
+    &__menu--side {
+      position: absolute;
+      z-index: 2;
+      top: 40px;
+      right: -15px;
+      background: #0f1f4b;
+      padding: 30px 40px;
+      transform: translateX(100%);
+      opacity: 0;
+      transition: all 0.3s;
+
+      ul {
+        flex-direction: column;
+
+        li {
+          width: fit-content;
+          margin-bottom: 35px;
+          position: relative;
+          z-index: 1;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        li::before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          bottom: -1px;
+          left: 0;
+          right: 0;
+          margin: auto;
+          width: 0%;
+          height: 2px;
+          background-color: $pink;
+          transition: all 0.2s;
+        }
+
+        li:hover::before {
+          width: 100%;
+        }
+      }
+    }
+
+    &__menu--adaptive {
+      display: none;
+    }
+  }
+
+  .dashboard {
+    padding-top: 40px;
+    padding-bottom: 100px;
+    flex-direction: column;
+    align-items: start;
+
+    &__info {
+      max-width: 100%;
+      text-align: center;
+
+      &-title {
+        font-size: 45px;
+      }
+
+      &-text {
+        padding-bottom: 30px;
+      }
+    }
+
+    &__charts {
+      margin: 0 auto;
+      width: 100%;
+
+      img {
+        visibility: hidden;
+      }
+
+      &::before {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -30%);
+        width: 650px;
+        height: 490px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard__info {
+    &-title {
+      font-size: 36px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .intro {
+    &::after,
+    &::before {
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    }
+  }
+
+  .header {
+    gap: 10px;
+    justify-content: flex-start;
+
+    &__logo {
+      margin-right: 0;
+    }
+  }
+
+  .dashboard {
+    padding-top: 40px;
+    gap: 24px;
+
+    &__info {
+      padding-top: 0;
+      text-align: start;
+
+      &-text {
+        font-size: 16px;
+      }
+    }
+
+    &__charts {
+      &::before {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+      }
+    }
+  }
+}

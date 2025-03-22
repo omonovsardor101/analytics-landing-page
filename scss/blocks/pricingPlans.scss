@@ -1,0 +1,195 @@
+.pricing-plans {
+  position: relative;
+  z-index: 1;
+  padding-top: 280px;
+  padding-bottom: 100px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: $background-dark-blue;
+    clip-path: polygon(0 25%, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -17px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $pink;
+    clip-path: polygon(0 25%, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  &__description {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 150%;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 540px;
+  }
+
+  &__subscribtions {
+    display: flex;
+    justify-content: space-between;
+
+    .subscribtions__item:first-child,
+    .subscribtions__item:last-child {
+      @include cards(#0f1f4b, #fff, #2a407c, #fff);
+      .subscribtions__item__order-btn {
+        @include btn(transparent, #fff, #2a407c, 68px, 16px, 16px, 80px);
+        transition: all 0.2s ease;
+
+        &:hover {
+          filter: brightness(150%);
+        }
+      }
+      box-shadow: 0 18px 50px -15px rgba(25, 42, 89, 0.2);
+    }
+    .subscribtions__item:nth-child(2) {
+      @include cards(#fff, #000, #d3d9e9, #000);
+      .subscribtions__item__order-btn {
+        @include btn($pink, #fff, transparent, 68px, 16px, 16px, 80px);
+        transition: all 0.2s ease;
+
+        &:hover {
+          @include btn(transparent, $pink, $pink, 68px, 16px, 16px, 80px);
+        }
+      }
+      box-shadow: 0 18px 50px -15px #060f28;
+    }
+
+    .subscribtions__item {
+      border-radius: 30px;
+      padding: 50px 66px 70px;
+      text-align: center;
+
+      &__title {
+        font-weight: 700;
+        font-size: 30px;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+
+      &__subtitle {
+        position: relative;
+        font-size: 18px;
+        line-height: 150%;
+        color: $gray;
+        margin-bottom: 66px;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 220%;
+          left: 50%;
+          width: 220px;
+          height: 1px;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      &__price {
+        font-weight: 700;
+        font-size: 60px;
+        margin-bottom: 5px;
+      }
+
+      &__currency {
+        font-size: 30px;
+      }
+
+      &__period {
+        font-size: 16px;
+        line-height: 140%;
+        color: $gray;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .pricing-plans {
+    padding-top: 150px;
+
+    &::after,
+    &::before {
+      clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    &__description {
+      margin-bottom: 50px;
+    }
+
+    &__subscribtions {
+      justify-content: space-evenly;
+      flex-flow: row wrap;
+      gap: 35px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pricing-plans {
+    &::after,
+    &::before {
+      clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+
+    &__subscribtions {
+      .subscribtions__item {
+        padding: 30px 40px 50px;
+
+        &__title {
+          font-size: 26px;
+        }
+
+        &__subtitle {
+          font-size: 16px;
+
+          &::before {
+            width: 180px;
+          }
+        }
+
+        &__price {
+          font-size: 45px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .pricing-plans {
+    &::after,
+    &::before {
+      clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
+    }
+  }
+}

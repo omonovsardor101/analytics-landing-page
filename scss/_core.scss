@@ -1,0 +1,60 @@
+// Basic styles
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: $light-gray;
+}
+
+.container {
+  @include min-max(320px, 100%);
+}
+
+.wrap {
+  @include min-max(320px, 1180px);
+}
+
+.common-title {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+p,
+a,
+button {
+  color: $gray;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+button {
+  user-select: none;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+  .wrap {
+    padding-inline: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .common-title {
+    font-size: 32px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .wrap {
+    padding-inline: 10px;
+  }
+}

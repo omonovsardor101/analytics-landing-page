@@ -1,0 +1,40 @@
+@mixin min-max($min-width, $max-width) {
+  min-width: $min-width;
+  max-width: $max-width;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+@mixin btn(
+  $bg-color,
+  $color,
+  $brd-color,
+  $brd-rd,
+  $font-size,
+  $p-block,
+  $p-inline
+) {
+  background-color: $bg-color;
+  color: $color;
+  border: 1px solid $brd-color;
+  border-radius: $brd-rd;
+  font-size: $font-size;
+  padding: $p-block $p-inline;
+  cursor: pointer;
+}
+
+@mixin cards($bg-color, $title-color, $hr-bg-color, $price-color) {
+  background: $bg-color;
+
+  .subscribtions__item__title {
+    color: $title-color;
+  }
+
+  .subscribtions__item__subtitle::before {
+    background: $hr-bg-color;
+  }
+
+  .subscribtions__item__price {
+    color: $price-color;
+  }
+}

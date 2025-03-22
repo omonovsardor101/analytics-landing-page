@@ -1,0 +1,15 @@
+// to compile: sass --watch ./scss/main.scss ./css/style.css
+
+@charset "UTF-8";
+
+@import "reset";
+@import "vars";
+@import "fonts";
+@import "mixins";
+@import "core";
+
+@import "blocks/intro.scss";
+@import "blocks/features.scss";
+@import "blocks/roadmap.scss";
+@import "blocks/pricingPlans.scss";
+@import "blocks/footer.scss";
